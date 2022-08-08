@@ -15,7 +15,10 @@ function saveDataForm(e) {
 
 function handlerSubmit(e) {
   e.preventDefault();
-  e.target.reset();
+  const { email: emailForm, message: messageForm } = formElement.elements;
+  emailForm.value === '' || messageForm.value === ''
+    ? alert('Заповніть поля')
+    : e.target.reset();
   localStorage.removeItem(LOCALSTORAGE_KEY);
 }
 
@@ -26,6 +29,8 @@ function showDataForm() {
     const { email: emailForm, message: messageForm } = formElement.elements;
     emailForm.value = email || '';
     messageForm.value = message || '';
+
+    formValue = localStorageValue;
   }
 }
 
